@@ -140,3 +140,8 @@ Usage: <class_name>.update(<_id>, <dictionary>)
 (hbnb) ["[User] (98bea5de-9cb0-4d78-8a9d-c4de03521c30) {'updated_at': datetime.datetime(2020, 2, 19, 21, 47, 29, 134362), 'name': 'Fred the Frog', 'age': 9, 'id': '98bea5de-9cb0-4d78-8a9d-c4de03521c30', 'created_at': datetime.datetime(2020, 2, 19, 21, 47, 29, 134343)}"]
 ```
 <br>
+
+<center> <h1>UPDATE README FILE - 0x02. AirBnB clone - MySQL</h1> </center>
+    * update do_create function in order to accpet only classes attributes types
+    * create Script for airbnb mysql db setup + user priviliges
+    * create Script for airbnb mysql db_test setup + user priviliges
