@@ -18,7 +18,8 @@ class DBStorage:
     """DB storage class definition"""
     __engine = None
     __session = None
-
+    classes = (BaseModel, State, City, Place, Review, Amenity, User)
+    
     def __init__(self):
         """engine DB initialisation"""
         self.__engine = create_engine("mysql+mysqldb://{}:{}@{}/{}"
@@ -40,16 +41,13 @@ class DBStorage:
             objects = self.__session.query(cls).all()
             for obj in objects:
                 key = obj.__class__.__name__ + '.' + obj.id
-                value = obj
-                objs_dict[key] = value
+                objs_dict[key] = obj
         else:
-            list_cls = (State, City, Place, User, Amenity, Review)
-            for clss in list_cls:
-                objects = self.__session.query(clss).all()
+            for value in self.classes:
+                objects = self.__session.query(value).all()
                 for obj in objects:
-                    key = obj.__class__.__name__ + '.' + obj.id
-                    value = obj
-                    objs_dict[key] = value
+                    key = type.__class__.__name__ + '.' + obj.id
+                    objs_dict[key] = obj
         return objs_dict
 
     def new(self, obj):
