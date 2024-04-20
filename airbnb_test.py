@@ -13,13 +13,11 @@ from models.amenity import Amenity
 from models.review import Review
 
 
-os.environ['HBNB_MYSQL_USER'] = 'hbnb_dev'
-os.environ['HBNB_MYSQL_PWD'] = 'hbnb_dev_pwd'
-os.environ['HBNB_MYSQL_HOST'] = 'localhost'
-os.environ['HBNB_MYSQL_DB'] = 'hbnb_dev_db'
-os.environ['HBNB_TYPE_STORAGE'] = 'db'
-
-
-state1 = State()
-state1.name = "berrechid"
-
+state3 = State()
+state3.name = "test2333"
+storage.new(state3)
+storage.save()
+all_objcs = storage.all()
+for obj_id in all_objcs.keys():
+    obj = all_objcs[obj_id]
+    print(obj)
