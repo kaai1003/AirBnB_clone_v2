@@ -32,16 +32,17 @@ class HBNBCommand(cmd.Cmd):
                   "longitude", "amenity_ids"],
         'State': ["name"],
         'City': ["state_id", "name"],
-        'Amenity': ["name"], 
+        'Amenity': ["name"],
         'Review': ["place_id", "user_id", "text"]
         }
     attr_types = {
-        'string' : ["name", "state_id", "city_id", "user_id",
-                    "description", "text", "place_id",
-                    "email", "password", "first_name", "last_name"],
-        'int' : ["number_rooms", "number_bathrooms", "max_guest", "price_by_night"],
-        'float' : ["latitude", "longitude"],
-        'list' : ["amenity_ids"]
+        'string': ["name", "state_id", "city_id", "user_id",
+                   "description", "text", "place_id",
+                   "email", "password", "first_name", "last_name"],
+        'int': ["number_rooms", "number_bathrooms",
+                "max_guest", "price_by_night"],
+        'float': ["latitude", "longitude"],
+        'list': ["amenity_ids"]
     }
     dot_cmds = ['all', 'count', 'show', 'destroy', 'update']
     types = {
@@ -154,17 +155,15 @@ class HBNBCommand(cmd.Cmd):
                                 new_value = new_value.replace('_', ' ')
                                 setattr(new_instance, value[0], new_value)
                         elif value[0] in HBNBCommand.attr_types["float"]:
-                            float_reg = '[+-]?[0-9]+\.[0-9]+'
+                            float_reg = r'[+-]?[0-9]+\.[0-9]+'
                             if re.search(float_reg, value[1]):
                                 new_value = float(value[1])
                                 setattr(new_instance, value[0], new_value)
-                                #print("ok Float {}".format(value[1]))
                         elif value[0] in HBNBCommand.attr_types["int"]:
-                            int_reg = '^\d+$'
+                            int_reg = r'^\d+$'
                             if re.search(int_reg, value[1]):
                                 new_value = int(value[1])
                                 setattr(new_instance, value[0], new_value)
-                                #print("ok int {}".format(value[1]))
                     else:
                         continue
         storage.new(new_instance)
@@ -323,7 +322,7 @@ class HBNBCommand(cmd.Cmd):
             args = args.partition(' ')
 
             # if att_name was not quoted arg
-            if not att_name and args[0] !=  ' ':
+            if not att_name and args[0] != ' ':
                 att_name = args[0]
             # check for quoted val arg
             if args[2] and args[2][0] == '\"':
@@ -362,6 +361,7 @@ class HBNBCommand(cmd.Cmd):
         """ Help information for the update class """
         print("Updates an object with new information")
         print("Usage: update <className> <id> <attName> <attVal>\n")
+
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
