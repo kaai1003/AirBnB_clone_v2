@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """flask web application module"""
 from flask import Flask
+from markupsafe import escape
 
 
 app = Flask(__name__)
@@ -18,11 +19,11 @@ def hbnb():
     return "HBNB"
 
 
-@app.route('c/<text>', strict_slashes=False)
+@app.route('/c/<text>', strict_slashes=False)
 def c(text):
     """display C + text"""
     text = text.replace('_', ' ')
-    return f"C {text}"
+    return f"C {escape(text)}"
 
 
 if __name__ == "__main__":
