@@ -68,3 +68,7 @@ class FileStorage:
             obj_inst = obj.__class__.__name__ + "." + obj.id
             if obj_inst in self.__objects:
                 del self.__objects[obj_inst]
+
+    def close(self):
+        """call reload method"""
+        self.reload()
