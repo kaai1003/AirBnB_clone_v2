@@ -40,3 +40,16 @@ class Place(BaseModel, Base):
                 if review.place_id == self.id:
                     reviews_list.append(review)
             return reviews_list
+        
+
+        @property
+        def amenities(self):
+            """retrieve amenities associated with place"""
+            from models.amenity import Amenity
+            from models import storage
+            amenities_list = []
+            all_amenities = storage.all(Amenity).values()
+            for amenity in list(all_amenities):
+                if amenity.id == self.amenity_ids:
+                    amenities_list.append(amenity)
+            return amenities_list
