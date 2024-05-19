@@ -2,16 +2,16 @@
 """This module defines a class to manage DB storage"""
 import json
 from models.base_model import BaseModel, Base
+from sqlalchemy import (create_engine)
+from sqlalchemy.orm import sessionmaker
+from sqlalchemy.orm import scoped_session
+import os
 from models.user import User
 from models.place import Place
 from models.state import State
 from models.city import City
 from models.amenity import Amenity
 from models.review import Review
-from sqlalchemy import (create_engine)
-from sqlalchemy.orm import sessionmaker
-from sqlalchemy.orm import scoped_session
-import os
 
 
 class DBStorage:

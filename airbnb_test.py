@@ -13,11 +13,8 @@ from models.amenity import Amenity
 from models.review import Review
 
 
-state3 = State()
-state3.name = "test2333"
-storage.new(state3)
+city1 = City()
+city1.state_id = "e7fbe122-7a10-42cb-b100-c60236fa700a"
+city1.name = "test1"
+storage.new(city1)
 storage.save()
-all_objcs = storage.all()
-for obj_id in all_objcs.keys():
-    obj = all_objcs[obj_id]
-    print(obj)
